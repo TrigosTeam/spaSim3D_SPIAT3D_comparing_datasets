@@ -402,7 +402,8 @@ analyse_simulated_set <- function(simulation_metadata_for_simulated_group1,
     minimum_distance_data <- calculate_minimum_distances_between_cell_types3D(spe,
                                                                               cell_types,
                                                                               show_summary = F,
-                                                                              plot_image = F)
+                                                                              plot_image = F,
+                                                                              feature_colname = "Cell.Type")
     
     minimum_distance_data_summary <- summarise_distances_between_cell_types3D(minimum_distance_data)
     
@@ -419,7 +420,8 @@ analyse_simulated_set <- function(simulation_metadata_for_simulated_group1,
                                                            reference_cell_type,
                                                            cell_types,
                                                            radii,
-                                                           plot_image = F)
+                                                           plot_image = F,
+                                                           feature_colname = "Cell.Type")
       
       for (target_cell_type in cell_types) {
         print(paste(reference_cell_type, target_cell_type, sep = "/"))
@@ -479,7 +481,8 @@ analyse_simulated_set <- function(simulation_metadata_for_simulated_group1,
                                                                               n_splits,
                                                                               reference_cell_type, 
                                                                               target_cell_type,
-                                                                              plot_image = F)
+                                                                              plot_image = F,
+                                                                              feature_colname = "Cell.Type")
           
           if (is.null(proportion_grid_metrics)) {
             metric_df_list[["PBSAC"]][pair_index, "PBSAC"] <- NA
@@ -503,7 +506,8 @@ analyse_simulated_set <- function(simulation_metadata_for_simulated_group1,
           entropy_grid_metrics <- calculate_entropy_grid_metrics3D(spe, 
                                                                    n_splits,
                                                                    c(reference_cell_type, target_cell_type), 
-                                                                   plot_image = F)
+                                                                   plot_image = F,
+                                                                   feature_colname = "Cell.Type")
           
           if (is.null(entropy_grid_metrics)) {
             metric_df_list[["EBSAC"]][pair_index, "EBSAC"] <- NA
@@ -553,7 +557,8 @@ analyse_simulated_set <- function(simulation_metadata_for_simulated_group1,
     minimum_distance_data <- calculate_minimum_distances_between_cell_types2D(spe,
                                                                               cell_types,
                                                                               show_summary = F,
-                                                                              plot_image = F)
+                                                                              plot_image = F,
+                                                                              feature_colname = "Cell.Type")
     
     minimum_distance_data_summary <- summarise_distances_between_cell_types2D(minimum_distance_data)
     
@@ -570,7 +575,8 @@ analyse_simulated_set <- function(simulation_metadata_for_simulated_group1,
                                                            reference_cell_type,
                                                            cell_types,
                                                            radii,
-                                                           plot_image = F)
+                                                           plot_image = F,
+                                                           feature_colname = "Cell.Type")
       
       for (target_cell_type in cell_types) {
         print(paste(reference_cell_type, target_cell_type, sep = "/"))
@@ -630,7 +636,8 @@ analyse_simulated_set <- function(simulation_metadata_for_simulated_group1,
                                                                               n_splits,
                                                                               reference_cell_type, 
                                                                               target_cell_type,
-                                                                              plot_image = F)
+                                                                              plot_image = F,
+                                                                              feature_colname = "Cell.Type")
           
           if (is.null(proportion_grid_metrics)) {
             metric_df_list[["PBSAC"]][pair_index, "PBSAC"] <- NA
@@ -654,7 +661,8 @@ analyse_simulated_set <- function(simulation_metadata_for_simulated_group1,
           entropy_grid_metrics <- calculate_entropy_grid_metrics2D(spe, 
                                                                    n_splits,
                                                                    c(reference_cell_type, target_cell_type), 
-                                                                   plot_image = F)
+                                                                   plot_image = F,
+                                                                   feature_colname = "Cell.Type")
           
           if (is.null(entropy_grid_metrics)) {
             metric_df_list[["EBSAC"]][pair_index, "EBSAC"] <- NA
