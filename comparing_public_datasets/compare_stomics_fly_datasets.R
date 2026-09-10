@@ -722,7 +722,7 @@ plot_tallies_with_categories_bar <- function(tallies, metrics) {
   return(fig)
 }
 
-plot_metric_2D_vs_2D_comparison_categorised <- function(metric_3D_vs_2D_comparison_results,
+plot_metric_3D_vs_2D_comparison_categorised <- function(metric_3D_vs_2D_comparison_results,
                                                         cell_types_of_interest,
                                                         metrics,
                                                         tallies) {
@@ -959,7 +959,7 @@ dev.off()
 
 
 # 3D vs 2D comparison, separated into categorical trends
-# fig_metric_2D_vs_2D_comparison_categorised <- plot_metric_2D_vs_2D_comparison_categorised(metric_df_list_combined, stomics_fly_cells, metrics, tallies)
+# fig_metric_3D_vs_2D_comparison_categorised <- plot_metric_3D_vs_2D_comparison_categorised(metric_df_list_combined, stomics_fly_cells, metrics, tallies)
 # 
 # setwd("~/R/plots/public_data/stomics_comparison")
 # 
@@ -969,11 +969,11 @@ dev.off()
 #   
 #   for (metric in metrics) {
 #     
-#     if (length(fig_metric_2D_vs_2D_comparison_categorised[[metric]][[category]]) == 0) {
+#     if (length(fig_metric_3D_vs_2D_comparison_categorised[[metric]][[category]]) == 0) {
 #       next 
 #     }
 #     
-#     grid.arrange(do.call(arrangeGrob, c(fig_metric_2D_vs_2D_comparison_categorised[[metric]][[category]])))
+#     grid.arrange(do.call(arrangeGrob, c(fig_metric_3D_vs_2D_comparison_categorised[[metric]][[category]])))
 #   }
 #   
 #   dev.off() 
