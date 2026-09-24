@@ -850,6 +850,8 @@ analyse_simulated_collection <- function(n_simulations_in_group,
                                                     metrics,
                                                     cell_types) {
     
+    multiple_testing_correction_factor <- length(metrics) * n_sets
+    
     group1_metric_df_list3D <- simulated_set_analysis[["group1_metric_df_list3D"]]
     group2_metric_df_list3D <- simulated_set_analysis[["group2_metric_df_list3D"]]
     group1_metric_df_list2D <- simulated_set_analysis[["group1_metric_df_list2D"]]
@@ -864,7 +866,7 @@ analyse_simulated_collection <- function(n_simulations_in_group,
       group2_metric_df3D <- group2_metric_df_list3D[[metric]]
       group1_metric_df2D <- group1_metric_df_list2D[[metric]]
       group2_metric_df2D <- group2_metric_df_list2D[[metric]]
-
+      
       for (reference_cell_type in cell_types) {
         for (target_cell_type in cell_types) {
           
@@ -875,6 +877,10 @@ analyse_simulated_collection <- function(n_simulations_in_group,
           
           p_value3D <- wilcox.test(group1_metric_df3D_subset[[metric]], group2_metric_df3D_subset[[metric]])$p.value
           p_value2D <- wilcox.test(group1_metric_df2D_subset[[metric]], group2_metric_df2D_subset[[metric]])$p.value
+          
+          # Multiple testing correction
+          p_value3D <- p_value3D * multiple_testing_correction_factor
+          p_value2D <- p_value2D * multiple_testing_correction_factor
           
           # Add rows for 3D and 2D results
           metric_p_value_df <- rbind(
