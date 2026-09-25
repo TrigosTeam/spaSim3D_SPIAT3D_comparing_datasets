@@ -32,7 +32,7 @@ for (mouse_embryo_dataset_name in mouse_embryo_dataset_names) {
 
 ### Format analysis data by adding AUC --------
 get_gradient <- function(metric) {
-  if (metric %in% c("MS", "NMS", "ACIN", "ANE", "ANC", "COO")) {
+  if (metric %in% c("MS", "NMS", "ACIN", "ANE", "ANC", "FCO")) {
     return("radius")
   }
   else if (metric %in% c("PBP", "EBP")) {
@@ -58,7 +58,7 @@ get_AUC_for_radii_gradient_metrics <- function(y) {
 radii <- seq(20, 100, 10)
 radii_colnames <- paste("r", radii, sep = "")
 
-gradient_radii_metrics <- c("MS", "NMS", "ACIN", "ANE", "ANC", "COO", "CK", "CL", "CG")
+gradient_radii_metrics <- c("MS", "NMS", "ACIN", "ANE", "ANC", "FCO", "CK", "CL", "CG")
 
 ## Turn threshold radii metrics into AUC and add to metric_df list
 thresholds <- seq(0.01, 1, 0.01)
@@ -71,7 +71,7 @@ for (mouse_embryo_dataset_name in mouse_embryo_dataset_names) {
   for (metric in gradient_radii_metrics) {
     metric_AUC_name <- paste(metric, "AUC", sep = "_")
     
-    if (metric %in% c("MS", "NMS", "ANC", "ACIN", "ANE", "COO", "CK", "CL", "CG")) {
+    if (metric %in% c("MS", "NMS", "ANC", "ACIN", "ANE", "FCO", "CK", "CL", "CG")) {
       subset_colnames <- c("slice", "reference", "target", metric_AUC_name)
     }
     else {
@@ -110,7 +110,7 @@ for (mouse_embryo_dataset_name in mouse_embryo_dataset_names) {
 
 metrics <- c("AMD",
              "MS_AUC", "NMS_AUC",
-             "ACIN_AUC", "ANE_AUC", "ANC_AUC", "COO_AUC", "CK_AUC", "CL_AUC", "CG_AUC",
+             "ACIN_AUC", "ANE_AUC", "ANC_AUC", "FCO_AUC", "CK_AUC", "CL_AUC", "CG_AUC",
              "PBSAC", "EBSAC", "PBP_AUC", "EBP_AUC")
 
 
@@ -722,7 +722,7 @@ metrics <- c("AMD",
              "ANC_AUC", "ACIN_AUC", "ANE_AUC",
              "MS_AUC", "NMS_AUC",
              "CK_AUC", "CL_AUC", "CG_AUC",
-             "COO_AUC",
+             "FCO_AUC",
              "PBP_AUC", "EBP_AUC", "PBSAC", "EBSAC")
 
 mouse_embryo_cell_types <- c("Neuroectoderm-derived", 
